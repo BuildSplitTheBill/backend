@@ -1,8 +1,20 @@
+exports.up = knex =>
+  knex.schema.createTable('friedships', users => {
+    friendships.increments()
 
-exports.up = function(knex, Promise) {
-  
-};
+    friendships
+      .integer('friend_1_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('users')
 
-exports.down = function(knex, Promise) {
-  
-};
+    friendships
+      .integer('friend_2_id')
+      .unsigned()
+      .notNullable()
+      .references('id')
+      .inTable('users')
+  })
+
+exports.down = (knex, Promise) => knex.schema.dropTableIfExists('friendships')
