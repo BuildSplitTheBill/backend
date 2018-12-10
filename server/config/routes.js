@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs')
 const db = require('../../database/dbConfig.js')
 
 function register(req, res) {
-  console.log('here')
   const { username, password } = req.body
 
   const hash = bcrypt.hashSync(password, 4)

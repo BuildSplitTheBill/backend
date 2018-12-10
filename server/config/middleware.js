@@ -12,6 +12,8 @@ module.exports = server => {
   server.use(helmet())
   server.use(morgan('dev'))
   server.use(cors())
+
+  // sessions setup
   server.use(
     session({
       name: 'raaaar',
