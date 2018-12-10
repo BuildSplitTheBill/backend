@@ -1,8 +1,9 @@
+exports.up = knex =>
+  knex.schema.createTable('bills', bills => {
+    bills.increments()
 
-exports.up = function(knex, Promise) {
-  
-};
+    bills.float('amount').notNullable()
+    bills.integer('parties') // number of people who will need to pay the bill
+  })
 
-exports.down = function(knex, Promise) {
-  
-};
+exports.down = knex => knex.schema.dropTableIfExists('bills')

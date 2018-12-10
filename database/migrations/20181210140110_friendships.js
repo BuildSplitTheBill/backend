@@ -1,5 +1,8 @@
+// friendships connect users to other users
+// the design of the scheme means that many-to-many relationships are possible
+
 exports.up = knex =>
-  knex.schema.createTable('friedships', users => {
+  knex.schema.createTable('friedships', friendships => {
     friendships.increments()
 
     friendships
@@ -17,4 +20,4 @@ exports.up = knex =>
       .inTable('users')
   })
 
-exports.down = (knex, Promise) => knex.schema.dropTableIfExists('friendships')
+exports.down = knex => knex.schema.dropTableIfExists('friendships')

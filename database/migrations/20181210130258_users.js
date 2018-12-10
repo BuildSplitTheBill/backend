@@ -15,4 +15,4 @@ exports.up = knex =>
     users.float('balance').defaultTo(0)
   })
 
-exports.down = (knex, Promise) => knex.schema.dropTableIfExists('users')
+exports.down = knex => knex.schema.dropTableIfExists('users')
