@@ -1,7 +1,7 @@
 const express = require('express')
 
 const configureMiddleware = require('./config/middleware.js')
-const { register, login } = require('./config/routes.js')
+const { register, login, logout, verifySession } = require('./config/routes.js')
 
 const server = express()
 
@@ -16,11 +16,13 @@ server.get('/sanity-check', (req, res) => {
 
 server.post('/register', register)
 server.post('/login', login)
-server.post('/logout')
+server.post('/logout', logout)
 
 // protected routes
 
-server.get('/') // response includes user balance and unsettled bills
+server.get('/', verifySession, (req, res) =>
+  res.status(200).json({ message: 'you are logged in' })
+) // response includes user balance and unsettled bills
 
 server.get('/users') // to search for friends
 server.get('/friends') // so that the user knows who they can add to bills
