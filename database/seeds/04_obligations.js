@@ -1,13 +1,15 @@
-
-exports.seed = function(knex, Promise) {
-  // Deletes ALL existing entries
-  return knex('table_name').del()
-    .then(function () {
-      // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+exports.seed = knex =>
+  knex('obligations')
+    .truncate()
+    .then(() =>
+      knex('obligations').insert([
+        {
+          id: 1,
+          bill_id: 1,
+          user_id: 1,
+          is_owner: true,
+          paid: true,
+          date_paid: 'now'
+        }
+      ])
+    )

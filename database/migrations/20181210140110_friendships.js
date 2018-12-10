@@ -2,7 +2,7 @@
 // the design of the scheme means that many-to-many relationships are possible
 
 exports.up = knex =>
-  knex.schema.createTable('friedships', friendships => {
+  knex.schema.createTable('friendships', friendships => {
     friendships.increments()
 
     friendships
