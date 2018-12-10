@@ -1,6 +1,7 @@
 const express = require('express')
 
 const configureMiddleware = require('./config/middleware.js')
+const { register, login } = require('./config/routes.js')
 
 const server = express()
 
@@ -13,8 +14,8 @@ server.get('/sanity-check', (req, res) => {
 
 // public routes
 
-server.post('/register')
-server.post('/login')
+server.post('/register', register)
+server.post('/login', login)
 server.post('/logout')
 
 // protected routes
