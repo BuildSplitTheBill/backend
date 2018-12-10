@@ -1,7 +1,7 @@
 const express = require('express')
 
 const configureMiddleware = require('./config/middleware.js')
-const { register, login, logout, verifySession } = require('./config/routes.js')
+const { register, login, logout, verifySession } = require('./controllers')
 
 const server = express()
 
