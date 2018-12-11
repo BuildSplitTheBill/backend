@@ -26,7 +26,6 @@ module.exports = async (req, res) => {
 
     res.status(200).json([...friendsColumn1, ...friendsColumn2])
   } catch (error) {
-    console.log(error)
     res.status(500).json({ message: 'database error fetching users' })
   }
 }
