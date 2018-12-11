@@ -17,9 +17,8 @@ module.exports = async (req, res) => {
         'b.amount',
         'b.parties'
       )
-      .filter(bill => bill.paid == false)
 
-    res.status(200).json(bills)
+    res.status(200).json(bills.filter(bill => bill.paid == false))
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'database error fetching bills' })
