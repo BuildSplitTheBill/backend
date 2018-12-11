@@ -2,6 +2,7 @@ const db = require('../../database/dbConfig.js')
 
 module.exports = async (req, res) => {
   const currentUser = req.session.name
+  console.log(req.params)
 
   try {
     const bills = await db('users as u1')

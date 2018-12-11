@@ -39,14 +39,14 @@ server.get('/', verifySession, getHomepage) // response includes user balance an
 server.get('/users', verifySession, getUsers) // to search for friends
 server.get('/friends', verifySession, getFriends) // so that the user knows who they can add to bills
 
-server.post('/bills', verifySession, postBill) // bill info in request body
-server.get('/bills/:id', verifySession, getBillById) // get info for a single bill
-server.put('/bills/:id/pay', verifySession, payBillById) // move "money" from one user to another
-server.put('/bills/:id/edit', verifySession, editBillById) // if nothing paid yet, edit bill
-server.delete('/bills/:id', verifySession, deleteBillById) // if nothing paid yet, delete bill
+server.post('/bill', verifySession, postBill) // bill info in request body
+server.get('/bill/:id', verifySession, getBillById) // get info for a single bill
+server.put('/bill/:id/pay', verifySession, payBillById) // move "money" from one user to another
+server.put('/bill/:id/edit', verifySession, editBillById) // if nothing paid yet, edit bill
+server.delete('/bill/:id', verifySession, deleteBillById) // if nothing paid yet, delete bill
 
 server.get('/bills', verifySession, getBills) // return all bills associated with user, sorted by recency
-server.get('/bills/active', verifySession, getActiveBills) // return only current bills
+server.get('/bills/active', verifySession, getBills) // return only current bills
 server.get('/bills/archived', verifySession, getArchivedBills) // return history of bills
 
 // export server
