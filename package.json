@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "knex migrate:latest && knex seed:run",
     "start": "node",
     "server": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
