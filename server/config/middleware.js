@@ -11,7 +11,7 @@ module.exports = server => {
   server.use(express.json())
   server.use(helmet())
   server.use(morgan('dev'))
-  server.use(cors({ credentials: true, origin: 'http://localhost:3000' }))
+  server.use(cors())
 
   // sessions setup
   server.use(
