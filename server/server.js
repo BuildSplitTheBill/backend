@@ -46,8 +46,14 @@ server.put('/bill/:id/edit', verifySession, editBillById) // if nothing paid yet
 server.delete('/bill/:id', verifySession, deleteBillById) // if nothing paid yet, delete bill
 
 server.get('/bills', verifySession, getBills) // return all bills associated with user, sorted by recency
-server.get('/bills/active', verifySession, getBills) // return only current bills
+server.get('/bills/active', verifySession, getActiveBills) // return only current bills
 server.get('/bills/archived', verifySession, getArchivedBills) // return history of bills
 
 // export server
 module.exports = server
+
+// add friend
+// fix bills to have ownership info for get bills
+// add description and date to bills
+// history route ????
+// deprecate active and archived for now

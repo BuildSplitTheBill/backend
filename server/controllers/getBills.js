@@ -14,7 +14,8 @@ module.exports = async (req, res) => {
         'o.paid',
         'o.date_paid',
         'b.amount',
-        'b.parties'
+        'b.parties',
+        'b.description'
       )
 
     res.status(200).json(bills)
