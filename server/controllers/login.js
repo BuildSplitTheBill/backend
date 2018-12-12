@@ -5,7 +5,7 @@ const jwtKey = 'lkj;lkj;lkjaf;lek'
 
 function generateToken({ username }) {
   const payload = { username }
-  const options = { expiresIn: '1h' }
+  const options = { expiresIn: '1d' }
 
   return jwt.sign(payload, jwtKey, options)
 }
