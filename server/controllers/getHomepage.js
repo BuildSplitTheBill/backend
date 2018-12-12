@@ -1,7 +1,7 @@
 const db = require('../../database/dbConfig.js')
 
 module.exports = async (req, res) => {
-  const currentUser = req.session.name
+  const currentUser = req.decoded.username
 
   try {
     // grab the id and balance for the current user

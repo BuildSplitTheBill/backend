@@ -1,7 +1,7 @@
 const db = require('../../database/dbConfig.js')
 
 module.exports = async (req, res) => {
-  const currentUser = req.session.name
+  const currentUser = req.decoded.username
   const { amount, parties } = req.body // parties is an array ids of all who need to pay
 
   try {

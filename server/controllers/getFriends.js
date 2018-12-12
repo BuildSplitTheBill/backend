@@ -1,7 +1,7 @@
 const db = require('../../database/dbConfig.js')
 
 module.exports = async (req, res) => {
-  const currentUser = req.session.name
+  const currentUser = req.decoded.username
 
   try {
     // in our database we have two columns in the friends table

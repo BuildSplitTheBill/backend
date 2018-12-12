@@ -1,7 +1,7 @@
 const db = require('../../database/dbConfig.js')
 
 module.exports = async (req, res) => {
-  const currentUser = req.session.name
+  const currentUser = req.decoded.username
   console.log('running')
 
   try {
