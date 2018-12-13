@@ -68,17 +68,28 @@ module.exports = async (req, res) => {
         'o1.date_paid',
         'b.amount',
         'b.parties',
-        'b.description'
+        'b.description',
+        'b.id as billId'
       )
       .then(obligations =>
         obligations.map(
-          ({ id, name, paid, date_paid, amount, parties, description }) => ({
+          ({
+            id,
+            name,
+            paid,
+            date_paid,
+            amount,
+            parties,
+            description,
+            billId
+          }) => ({
             id,
             name,
             paid: !!paid,
             date_paid,
             amount: Math.floor(amount / parties),
-            description
+            description,
+            billId
           })
         )
       )

@@ -40,3 +40,5 @@ server.get('/bills', verifySession, getBills) // return all bills associated wit
 
 // export server
 module.exports = server
+
+// hide env vars
