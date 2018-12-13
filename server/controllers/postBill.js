@@ -2,7 +2,7 @@ const db = require('../../database/dbConfig.js')
 
 module.exports = async (req, res) => {
   const currentUser = req.decoded.username
-  const { amount, parties } = req.body // parties is an array ids of all who need to pay
+  const { description, amount, parties } = req.body // parties is an array ids of all who need to pay
 
   try {
     // grab the id for the current user
@@ -13,7 +13,7 @@ module.exports = async (req, res) => {
 
     // first, insert bill to bills table
     const billId = await db('bills')
-      .insert({ amount, parties: parties.length })
+      .insert({ description, amount, parties: parties.length })
       .then(id => id[0]) // grab the id from the returned array
 
     // insert owner's obligation
