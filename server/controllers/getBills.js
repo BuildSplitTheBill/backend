@@ -62,7 +62,7 @@ module.exports = async (req, res) => {
       .join('users as u', { 'u.id': 'o2.user_id' })
       .join('bills as b', { 'b.id': 'o1.bill_id' })
       .select(
-        'o2.id',
+        'o2.id as obligationId',
         'u.name',
         'o1.paid',
         'o1.date_paid',
@@ -74,7 +74,7 @@ module.exports = async (req, res) => {
       .then(obligations =>
         obligations.map(
           ({
-            id,
+            obligationId,
             name,
             paid,
             date_paid,
@@ -83,13 +83,13 @@ module.exports = async (req, res) => {
             description,
             billId
           }) => ({
-            id,
+            id: billId,
             name,
             paid: !!paid,
             date_paid,
             amount: Math.floor(amount / parties),
             description,
-            billId
+            obligation_id: obligationId
           })
         )
       )
