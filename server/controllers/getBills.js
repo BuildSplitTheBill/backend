@@ -29,18 +29,26 @@ module.exports = async (req, res) => {
         'b.amount',
         'b.parties'
       )
-      .then(obligations => ({
-        id: obligations[0].billId,
-        description: obligations[0].description,
-        obligations: obligations.map(
-          ({ obligationId, name, paid, amount, parties }) => ({
-            id: obligationId,
+      .then(obligations =>
+        obligations.map(
+          ({
+            billId,
+            description,
+            obligationId,
+            name,
+            paid,
+            amount,
+            parties
+          }) => ({
+            bill_id: billId,
+            description,
+            obligation_id: obligationId,
             name,
             paid: !!paid,
             amount: Math.floor(amount / parties)
           })
         )
-      }))
+      )
 
     // grab all the obligations the user owes
     const billsUserOwes = await db('obligations as o1')
