@@ -8,8 +8,6 @@ const getFriends = require('./getFriends.js')
 const postBill = require('./postBill.js')
 const getBillById = require('./getBillById.js')
 const payBillById = require('./payBillById.js')
-const editBillById = require('./editBillById.js')
-const deleteBillById = require('./deleteBillById.js')
 const getBills = require('./getBills.js')
 
 module.exports = {
@@ -23,7 +21,5 @@ module.exports = {
   postBill,
   getBillById,
   payBillById,
-  editBillById,
-  deleteBillById,
   getBills
 }
