@@ -4,15 +4,12 @@ module.exports = async (req, res) => {
   const currentUser = req.decoded.username
   const { id } = req.params
 
-  console.log('trying to pay bill')
-
   try {
     // grab the id for the current user
     const [currentUserId, currentUserBalance] = await db('users')
       .where({ username: currentUser })
       .first()
       .then(({ id, balance }) => [id, balance])
-      .catch(err => console.log(err))
 
     // grab the id of the obligation associated with
     // that user and that bill
@@ -23,7 +20,6 @@ module.exports = async (req, res) => {
       .select('o.id', 'b.amount', 'b.parties')
       .first()
       .then(({ id, amount, parties }) => [id, amount / parties])
-      .catch(err => console.log(err))
 
     // grab the bill owners id and name
     const [billOwnerId, billOwnerName, billOwnerBalance] = await db(
@@ -36,27 +32,21 @@ module.exports = async (req, res) => {
       .select('u.id', 'u.name', 'u.balance')
       .first()
       .then(({ id, name, balance }) => [id, name, balance])
-      .catch(err => console.log(err))
-
-    console.log('got this far')
 
     // remove from users balance
     await db('users as u')
       .where({ 'u.id': currentUserId })
       .update({ balance: currentUserBalance - obligationAmount })
-      .catch(err => console.log(err))
 
     // add to bill owners balance
     await db('users as u')
       .where({ 'u.id': billOwnerId })
       .update({ balance: billOwnerBalance + obligationAmount })
-      .catch(err => console.log(err))
 
     // mark obligation as paid
     await db('obligations as o')
       .where({ 'o.id': obligationId })
       .update({ paid: true, date_paid: Date.now() })
-      .catch(err => console.log(err))
 
     res
       .status(200)
