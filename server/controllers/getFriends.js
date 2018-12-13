@@ -16,13 +16,13 @@ module.exports = async (req, res) => {
       .where({ 'u1.username': currentUser })
       .join('friendships as f', { 'u1.id': 'f.friend_1_id' })
       .join('users as u2', { 'f.friend_2_id': 'u2.id' })
-      .select('u2.id', 'u2.name')
+      .select('u2.id', 'u2.name', 'u2.email')
 
     const friendsColumn2 = await db('users as u1')
       .where({ 'u1.username': currentUser })
       .join('friendships as f', { 'u1.id': 'f.friend_2_id' })
       .join('users as u2', { 'f.friend_1_id': 'u2.id' })
-      .select('u2.id', 'u2.name')
+      .select('u2.id', 'u2.name', 'u2.email')
 
     res.status(200).json([...friendsColumn1, ...friendsColumn2])
   } catch (error) {
