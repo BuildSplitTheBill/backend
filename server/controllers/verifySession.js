@@ -1,14 +1,6 @@
 const jwt = require('jsonwebtoken')
 const jwtKey = 'lkj;lkj;lkjaf;lek'
 
-// function verifySession(req, res, next) {
-//   if (req.session && req.session.name) {
-//     next()
-//   } else {
-//     res.status(401).json({ message: 'cannot access that resource' })
-//   }
-// }
-
 function verifySession(req, res, next) {
   const token = req.get('Authorization')
 

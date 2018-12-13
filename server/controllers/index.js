@@ -11,8 +11,6 @@ const payBillById = require('./payBillById.js')
 const editBillById = require('./editBillById.js')
 const deleteBillById = require('./deleteBillById.js')
 const getBills = require('./getBills.js')
-const getActiveBills = require('./getActiveBills.js')
-const getArchivedBills = require('./getArchivedBills.js')
 
 module.exports = {
   register,
@@ -27,7 +25,5 @@ module.exports = {
   payBillById,
   editBillById,
   deleteBillById,
-  getBills,
-  getActiveBills,
-  getArchivedBills
+  getBills
 }
