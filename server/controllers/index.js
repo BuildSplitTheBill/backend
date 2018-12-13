@@ -9,6 +9,7 @@ const postBill = require('./postBill.js')
 const getBillById = require('./getBillById.js')
 const payBillById = require('./payBillById.js')
 const getBills = require('./getBills.js')
+const addFriend = require('./addFriend.js')
 
 module.exports = {
   register,
@@ -21,5 +22,6 @@ module.exports = {
   postBill,
   getBillById,
   payBillById,
-  getBills
+  getBills,
+  addFriend
 }

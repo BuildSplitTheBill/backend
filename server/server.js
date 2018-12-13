@@ -12,7 +12,8 @@ const {
   postBill,
   getBillById,
   payBillById,
-  getBills
+  getBills,
+  addFriend
 } = require('./controllers')
 
 const server = express()
@@ -29,6 +30,7 @@ server.get('/', verifySession, getHomepage) // response includes user balance an
 
 server.get('/users', verifySession, getUsers) // to search for friends
 server.get('/friends', verifySession, getFriends) // so that the user knows who they can add to bills
+server.post('/friends/:id', verifySession, addFriend) // to add friend that has the passed id
 
 server.post('/bill', verifySession, postBill) // bill info in request body
 server.get('/bill/:id', verifySession, getBillById) // get info for a single bill
