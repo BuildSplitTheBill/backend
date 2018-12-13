@@ -1,6 +1,5 @@
 const register = require('./register.js')
 const login = require('./login.js')
-const logout = require('./logout.js')
 const verifySession = require('./verifySession.js')
 const getHomepage = require('./getHomepage.js')
 const getUsers = require('./getUsers.js')
@@ -14,7 +13,6 @@ const addFriend = require('./addFriend.js')
 module.exports = {
   register,
   login,
-  logout,
   verifySession,
   getHomepage,
   getUsers,
